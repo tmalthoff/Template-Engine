@@ -17,14 +17,56 @@ function makeTeam() {
 
     return inquirer.prompt([
         {
-            type: "input",
-            name: "name",
-            message: ""
+            type: "list",
+            name: "role",
+            message: "Please choose if you are a manager, intern, or engineer."
+            choices: ["Manager", "Intern", "Engineer", "Done"],
         }
     ])
+    .then(userAnsw => {
+        
+        switch (userAnsw.role) {
+
+            case "Manager":
+                putManager();
+                break;
+
+             case "Intern":
+                  putIntern();
+                    break;
+            
+            case "Engineer":
+                putEngineer();
+                break;
+            
+
+        }
+    })
+
+    function putManager() {
+        
+    }
+
+
+
+
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+module.exports = teamArray
+
+makeTeam();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 

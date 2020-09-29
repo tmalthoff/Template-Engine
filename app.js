@@ -53,12 +53,12 @@ function putManager() {
                 type: "input",
                 message: "What is your full name?",
                 name: "name",
-                validate: function(answer) {
-                    if(answer !== "") {
+                validate: function (answer) {
+                    if (answer !== "") {
                         return true;
 
                     }
-                    return "Please enter your name"
+                    return "Please enter your name."
                 }
             },
             {
@@ -76,21 +76,15 @@ function putManager() {
             },
             {
                 type: "input",
-                message: "What is your id number?",
+                message: "What is your numerical id number?",
                 name: "id",
-                validate: (answer) => {
-                    const pass = answer.match(/^SW\d{4}$/);
-                    if (pass) {
-                        return true;
-                    }
-                    return "Please enter your four digit code"
-                }
+               
 
             },
             {
                 type: "input",
                 message: "What is your office number?",
-                name: "officeNumber",
+                name: "officeNumber"
             },
 
         ])
@@ -114,42 +108,51 @@ function putIntern() {
                 type: "input",
                 message: "What is your full name?",
                 name: "name",
-                validate: function(answer) {
-                    if(answer !== "") {
+                validate: function (answer) {
+                    if (answer !== "") {
                         return true;
 
                     }
-                    return "Please enter your name"
+                    return "Please enter your name."
                 }
             },
             {
                 type: "input",
                 message: "What is your email address?",
                 name: "email",
-            },
-            {
-                type: "input",
-                message: "What is your id number?",
-                name: "id",
                 validate: (answer) => {
-                    const pass = answer.match(/^SW\d{4}$/);
+                    const pass = answer.match(/\S+@\S+\.\S+/);
+                    console.log(pass)
                     if (pass) {
                         return true;
                     }
-                    return "Please enter your four digit code"
-                }
+                    return "Please enter a valid email address."
+                }},
+                
+                {
+                    type: "input",
+                    message: "What is your numerical id number?",
+                    name: "id",
 
-            },
+    
+                },
+            
+    
+
+
+            
+
+
             {
                 type: "input",
                 message: "What school did you attend?",
                 name: "school",
-                validate: function(answer) {
-                    if(answer !== "") {
+                validate: function (answer) {
+                    if (answer !== "") {
                         return true;
 
                     }
-                    return "Please enter your name"
+                    return "Please enter your school name."
                 }
             },
 
@@ -174,42 +177,44 @@ function putEngineer() {
                 type: "input",
                 message: "What is your full name?",
                 name: "name",
-                validate: function(answer) {
-                    if(answer !== "") {
+                validate: function (answer) {
+                    if (answer !== "") {
                         return true;
 
                     }
-                    return "Please enter your name"
+                    return "Please enter your name."
                 }
             },
             {
                 type: "input",
                 message: "What is your email address?",
                 name: "email",
+                validate: (answer) => {
+                    const pass = answer.match(/\S+@\S+\.\S+/);
+                    console.log(pass)
+                    if (pass) {
+                        return true;
+                    }
+                    return "Please enter a valid email address."
+                }
             },
             {
                 type: "input",
-                message: "What is your id number?",
+                message: "What is your numerical  id number?",
                 name: "id",
-                validate: (answer) => {
-                    const pass = answer.match(/^SW\d{4}$/);
-                    if (pass === true) {
-                        return true;
-                    }
-                    return "Please enter your four digit code"
-                }
+
 
             },
             {
                 type: "input",
                 message: "What is your github username?",
                 name: "userName",
-                validate: function(answer) {
-                    if(answer !== "") {
+                validate: function (answer) {
+                    if (answer !== "") {
                         return true;
 
                     }
-                    return "Please enter your name"
+                    return "Please enter your github username."
                 }
             },
 
@@ -236,10 +241,10 @@ const render = require("./lib/htmlRenderer");
 
 function putDone() {
 
-if (!fs.existsSync(OUTPUT_DIR)) {
-fs.mkdirSync(OUTPUT_DIR)
-}
-fs.writeFileSync(outputPath, render(teamArray))
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, render(teamArray))
 }
 
 

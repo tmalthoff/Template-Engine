@@ -44,7 +44,39 @@ function makeTeam() {
     })
 
     function putManager() {
-        
+
+        inquirer
+            .prompt([
+                {
+                    message: "What is your full name?",
+                    name: "name",
+                },
+                {
+                    message: "What is your email address?",
+                    name: "email",
+                },
+                {
+                    message: "What is your id number?",
+                    name: "id",
+                    
+                },
+                {
+                    message: "What is your office number?",
+                    name: "officeNumber",
+                },
+
+            ])
+            .then(userAnsw => {
+                console.log(userAnsw)
+                   
+
+                const manager = new manager(userAnsw.name, userAnsw.email, userAnsw.id, userAnsw.officeNumber)
+           
+                teamArray.push(manager)
+
+                makeTeam();
+            })
+
     }
 
 
